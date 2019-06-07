@@ -3,27 +3,30 @@
 class Config {
 	
 	
-	public static function get($path){
-		
-		$config = $GLOBALS['config'];
-		$paths = explode('/',$path);
-		
-		foreach($paths as $path){
-			
-			if(isset($config[$path])){
-				
-				$config = $config[$path];
-				
-			}
-			
-			
-			
-		}
-		
-		return $config;
-		
-		
-	}
+	public static function get($path = null){
+
+        if($path){
+            $config = $GLOBALS['config'];
+
+            $path = explode('/',$path);
+
+            foreach ($path as $key) {
+                if(isset($config[$key])){
+                    $config = $config[$key];
+                }else{
+                    return false;
+                }
+            }
+
+            return $config;
+
+
+        }
+        
+        return false;
+
+    }
+
 	
 	
 }

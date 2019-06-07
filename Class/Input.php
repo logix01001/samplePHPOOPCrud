@@ -3,34 +3,39 @@
 
 class Input {
 	
-	public static function Exist($request){
-		
-		if(isset($_POST[$request]) || isset($_GET[$request]){
-			
-			return true;
-			
-		}else{
-			return false;
-		}
-		
-	}
-	
-	public static function get($request){
-		
-		
-		if(isset($_POST[$request])){
-			
-			return $_POST[$request];
-			
-		}
-		else if(isset($_GET[$request])){
-			return $_GET[$request];
-		}else{
-			
-			return '';
-		}
-		
-	}
-	
+
+    public static function exist($type = 'post'){
+
+        switch ($type) {
+            case 'post':
+                # code...
+                return (!empty($_POST)) ? true : false;
+                break;
+            case 'get':
+                # code...
+                if(isset($_GET)){
+                    return (!empty($_GET)) ? true : false;
+                }
+                break;
+            default:
+                # code...
+                return false;
+                break;
+        }
+
+    }
+
+    public static function get($item){
+        if(isset($_POST[$item])){
+            return $_POST[$item];
+        }else if(isset($_GET[$item])){
+            return $_GET[$item];
+        }
+        else{
+            return '';
+        }
+    }
+
+
 	
 }
