@@ -149,7 +149,7 @@ class Database
 		if($this->pdoWhere == null ){
 			$this->pdoWhere = ' WHERE `' . $field . '` ' . $operator . ' ' . $values;
 		}else{
-			$this->pdoWhere =  ' AND `' . $field . '` ' . $operator . ' ' . $values;
+			$this->pdoWhere .=  ' AND `' . $field . '` ' . $operator . ' ' . $values;
 		}
 		
 		return $this;
